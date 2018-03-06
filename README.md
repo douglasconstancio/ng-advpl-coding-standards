@@ -44,3 +44,8 @@
 - Lembre-se de, ao criar uma tabela temporária, fechá-la com `dbCloseArea`
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
+
+
+## Referências
+
+https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
