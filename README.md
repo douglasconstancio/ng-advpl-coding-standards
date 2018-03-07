@@ -7,17 +7,24 @@
 ### Estilo
 
 - Tabs somente para indentação, não para separação (ou seja, usar tabs somente à esquerda, antes de iniciar a linha, nunca no meio da linha)
-- Nome de variáveis devem se basear na notação húngara (iniciar por `n-números`, `c-char/string`, `l-boolean`, `a-array/matriz`, `o-objetos` e `x-indefinido`)
+- Nome de variáveis devem se basear na notação húngara (iniciar por `n-números`, `c-char/string`, `l-boolean`, `a-array/matriz`, `o-objetos` e `x-indefinido`, `b-bloco de código` )
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 - Ao terminar uma instrução `Do While`, prefira `EndDo` ao invés de somente `End`
 - Ao terminar uma instrução `For`, prefira `Next <variable>` ao invés de somente `Next`
 - Nomes de variáveis locais devem ser em **lowerCamelCase** (exemplos: `cName`, `nAge`)
 - Nomes de funções em notação húngara devem usar **lowerCamelCase** (exemplo: `aAdd`)
-- Use as variáveis com nomes iguais em tamanho e caixa (não faça `thisIsMyVariable` e `THISISMYVARI`)
+- Use as variáveis com nomes iguais em tamanho e caixa (não faça `thisIsMyVari` e `THISISMYVARI`)
 - Nomes de funções sem notação húngara devem usar **UpperCamelCase** (exemplo: `RetSqlName`)
 - Deve haver 1 espaço entre os argumentos de função, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
 - Deve haver 1 espaço após cada vírgula (exemplo: `{ 1, 2, 3 }`)
+
+> estoura muito rápido o espaçamento, sendo que já pede 80 colunas no fonte.
+Ruim: Function( 'STJ' , .T. )
+Bom: Function('STJ', .T.)
+
+If Function( cVal1, nVariable, cVal1, nVariable, cVal1, nVariable, cVal1, nVariable, cVal1, nVariable)
+
 - Deve haver espaço entre parâmetros de funções (use `Call( 1, 2, 3 )` e não `Call(1,2,3)`)
 - Evite ultrapassar 80 colunas horizontalmente. Quebre o código com `;` quando necessário
 - Valores lógicos devem usar caixa alta (exemplo: `.F.`)
@@ -45,6 +52,10 @@
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
 
+
+
++ nao usar variaveis x ou y, etc.
++ Static fValid
 
 ## Referências
 
