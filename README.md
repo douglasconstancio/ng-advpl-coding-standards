@@ -69,7 +69,7 @@ Private cCaminhao
 > aspas simples facilita a leitura
 dbSelectArea("STJ")
 dbSelectArea('STJ')
-alert('a "citação" é boa ') -> pelo portugues exige usar aspas duplas dentro
+alert('a "citação" é boa ') -g> pelo portugues exige usar aspas duplas dentro
 > podemos fazer votação
 
 - Para acesso de índices múltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
@@ -99,6 +99,19 @@ alert('a "citação" é boa ') -> pelo portugues exige usar aspas duplas dentro
 
 + nao usar variaveis x ou y, etc.
 + Static fValid
+
++ 1. configura teu "editor.insertSpaces" no user.settings do vscode para "false" e https://dmitryfrank.com/articles/indent_with_tabs_align_with_spaces
++ 2.
+    Local nValue := 10
+
+    Local nI     := 20
+
+(edited)
+No caso, tudo que for à direita, antes de qualquer caractere visível, usa tab.
+Tipo antes de local
+E tudo que vai depois usa caractere
+Tipo entre `nI` e `:=` (edited)
+Isso porque, como tabs tem tamanho dinâmico, alinhar com eles quebra em outros editores e no diff do git.
 
 ## Referências
 
