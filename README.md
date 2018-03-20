@@ -1,90 +1,114 @@
 # AdvPL Coding Standards
 
-### Arquivo
+O presente documento tem por objetivo estabelecer um padrão de boas práticas a serem utilizadas pelas equipes de Desenvolvimento NG que atuam na plataforma Protheus AdvPL. As regras aqui listadas `não são restritivas`, mas buscam estabelecer uma identidade única para os fontes. A adoção desse padrão deve naturalmente se tornar um hábito, aumentando a legibilidade dos fontes e proporcionando mais segurança no processo de manutenção de sistemas.
+
+Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e funções já existentes devem ser adequadas gradativamente. Entretanto **não se recomenda** a mudança de trechos que não fazem parte do escopo de alteração, de forma a não comprometer a revisão técnica do fonte nem gerar risco de inserção de novos bugs acidentalmente.
+
+
+## Arquivo
 
 - A extensão deve ser minúscula (exemplo: `.prw`, `.apw`)
 
-### Estilo
+## Estilo
 
-- Tabs somente para indentação, não para separação (ou seja, usar tabs somente à esquerda, antes de iniciar a linha, nunca no meio da linha)
-- Nome de variáveis devem se basear na notação húngara (iniciar por `n-números`, `c-char/string`, `l-boolean`, `a-array/matriz`, `o-objetos` e `x-indefinido`, `b-bloco de código` )
+- Tabs somente para indentação, não para separação
+
+> A tabulação deve ser utilizada somente à esquerda, antes de iniciar a linha e nunca no meio da linha. O motivo é que quando o arquivo for aberto em diferentes editores (TDS, VSCode, Sublime, etc.), a formatação será respeitada
+
+- Nome de variáveis devem se basear na notação húngara
+
+>Iniciar por:
+>- n-numérico
+>- c-char/string
+>- l-logic/boolean
+>- a-array/matriz
+>- o-objetos
+>- b-bloco de código
+>- x-indefinido
+
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
-- Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
+
+- Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`
+)
+
 - Ao terminar uma instrução `Do While`, prefira `EndDo` ao invés de somente `End`
+
 - Ao terminar uma instrução `For`, prefira `Next <variable>` ao invés de somente `Next`
+
 - Nomes de variáveis locais devem ser em **lowerCamelCase** (exemplos: `cName`, `nAge`)
+
 - Nomes de funções em notação húngara devem usar **lowerCamelCase** (exemplo: `aAdd`)
+
 - Use as variáveis com nomes iguais em tamanho e caixa (não faça `thisIsMyVari` e `THISISMYVARI`)
+
 - Nomes de funções sem notação húngara devem usar **UpperCamelCase** (exemplo: `RetSqlName`)
-- Deve haver 1 espaço entre os argumentos de função, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
-- Deve haver 1 espaço após cada vírgula (exemplo: `{ 1, 2, 3 }`)
 
-> estoura muito rápido o espaçamento, sendo que já pede 80 colunas no fonte.
-Ruim: Function( 'STJ' , .T. )
-Bom: Function('STJ', .T.)
-
-> If Function( cVal1, nVariable, cVal1, nVariable, cVal1, nVariable, cVal1, nVariable, cVal1, nVariable)
-
-- Deve haver espaço entre parâmetros de funções (use `Call( 1, 2, 3 )` e não `Call(1,2,3)`)
-- Evite ultrapassar 80 colunas horizontalmente. Quebre o código com `;` quando necessário
-
-> sugestao de 140
+- Evite ultrapassar 120 colunas horizontalmente. Quebre o código com `;` quando necessário
 
 - Valores lógicos devem usar caixa alta (exemplo: `.F.`)
+
 - Espaço entre operadores. Use `nValue > nExpected` ao invés de `nValue>nExpected`
-- `Return` indentado, já que faz parte da estrutura da função e **não** é um terminador
-
-Function Xis()
-
-	Local abc
-	If
-	EndIf
-
-Return Nil
-
-- Em comentários, 1 espaço após `//`
-
-> If nLocal > 0 //Comentario. Não concordamos que seja uma boa prática.
 
 - Idioma padronizado. Evite misturar português e inglês quando possível
-> ok, padrão é não misturar, mas não se define qual a língua padrão
 
 - Deixar 1 linha em branco para cada *statement*, exceto conjuntos de *statements*
 
-Local lRet
-Local lOk
+```
+Function Test()
 
-Local cMoto
+    If Something
+        ...
+    EndIf
 
-Private nMacas
+    For nI := 1 To 10
+        For nZ := 1 To 10
+            ...
+        Next nZ
+    Next nI
 
-Private cCaminhao
-
-> nao vemos muito sentido, deixamos tudo junto mas ordenado por tipagem
+Return
+```
 
 - Deixar 1 linha vazia no final de cada arquivo
-> por que?
+
+> Ferramentas de diff se perdem sem linha final e alguns editores já salvam por padrão uma linha extra. Alguns compiladores não entendem o fim de arquivo (não é o caso do AdvPL), por isso é uma boa prática em programação.
 
 - Prefira aspas simples `'` ao invés de duplas `"`
-> aspas simples facilita a leitura
-dbSelectArea("STJ")
-dbSelectArea('STJ')
-alert('a "citação" é boa ') -g> pelo portugues exige usar aspas duplas dentro
-> podemos fazer votação
+
+> Aspas simples facilitam a leitura do código e permitem, por padrão, o uso de aspas duplas nas strings (ex: cString := 'Verifique o campo "quantidade" na tela.')
 
 - Para acesso de índices múltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
-> com vírgula economizamos caracteres
 
 - Funções **não** devem receber mais que 6 parâmetros
-> qual o motivo?
+
+> Esse é um padrão utilizado em praticamente qualquer linguagem de programação com funções. Funções mestras, muito grandes, são muito mais difíceis de manter e de testar do que funções que fazem uma coisa, e a fazem bem feito. Testes unitários são integráveis a funções simples, mas difíceis em funções com muitos parâmetros. É até comum que as pessoas se percam com tantos parâmetros vazios (ex: TObj:New(100,30,,,,,,.F.)).
+
+> Importante ressaltar que cada função deve ser
+exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre software engineering de como funções com muitos parâmetros quebram modularidade e reuso. Normalmente funções que precisam de muitos parâmetros são passíveis de melhoria para melhor abstração em sua arquitetura.
 
 - Evite aninhamentos com mais de 3 statements (exemplo: `If` dentro de `If` dentro de `If`)
 
-
 - Use `!=` ao invés de `<>`
+
 - Não faça `== .T.`
+
 - Use `!` ao invés de `.Not.`
 
+## Espaçamento
+
+- Deve haver 1 espaço entre os argumentos de função, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
+
+- Deve haver 1 espaço após cada vírgula (exemplo: `{ 1, 2, 3 }`)
+
+- Deve haver espaço entre parâmetros de funções (use `Call( 1, 2, 3 )` e não `Call(1,2,3)`)
+
+> A recomendação é usar espaçamento antes de iniciar o primeiro parâmetro, entre cada parâmetro e ao final. Entretanto, o primeiro e último espaços ficam a critério de cada um.
+
+- **[OFF - PREFERIMOS MANTER À ESQUERDA]** `Return` indentado, já que faz parte da estrutura da função e **não** é um terminador
+
+- Em comentários, 1 espaço após `//`
+
+> Apesar de não ser uma obrigação, o espaçamento antes de começar a descrever o comentário auxilia na leitura e também a encontrar e substituir programaticamente padrões da linguagem.
 
 ## Redundância
 
@@ -93,26 +117,22 @@ alert('a "citação" é boa ') -g> pelo portugues exige usar aspas duplas dentro
 ## Funcionamento
 
 - Lembre-se de, ao criar uma tabela temporária, fechá-la com `dbCloseArea`
+
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
+
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
 
+## Funções
 
-+ nao usar variaveis x ou y, etc.
-+ Static fValid
+- São consideradas `funções genéricas` aquelas que se aplicam a qualquer módulo, normalmente sem tratar de conceitos e regra de negócio. Devem ser criadas em fontes genéricos como NGUtil e preferencialmente começar pelos caracteres `NG`
 
-+ 1. configura teu "editor.insertSpaces" no user.settings do vscode para "false" e https://dmitryfrank.com/articles/indent_with_tabs_align_with_spaces
-+ 2.
-    Local nValue := 10
+- São consideradas `funções genéricas do módulo` aquelas que atendem regras mais genéricas de algum módulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do módulo como MNTUtil ou MDTUtil e preferencialmente começar pelos caracteres do módulo, ex: `MNT` ou `MDT`
 
-    Local nI     := 20
+- São consideradas `funções de rotina` aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080CAD()`
 
-(edited)
-No caso, tudo que for à direita, antes de qualquer caractere visível, usa tab.
-Tipo antes de local
-E tudo que vai depois usa caractere
-Tipo entre `nI` e `:=` (edited)
-Isso porque, como tabs tem tamanho dinâmico, alinhar com eles quebra em outros editores e no diff do git.
+- São consideras `funções estáticas` aquelas que são utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
+
 
 ## Referências
 
-https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
+AdvPL Coding Standars - https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
