@@ -1,6 +1,6 @@
 # AdvPL Coding Standards
 
-O presente documento tem por objetivo estabelecer um padrão de boas práticas a serem utilizadas pelas equipes de Desenvolvimento NG que atuam na plataforma Protheus AdvPL. As regras aqui listadas `não são restritivas`, mas buscam estabelecer uma identidade única para os fontes. A adoção desse padrão deve naturalmente se tornar um hábito, aumentando a legibilidade dos fontes e proporcionando mais segurança no processo de manutenção de sistemas.
+O presente documento tem por objetivo estabelecer um padrão de boas práticas a serem utilizadas pelas equipes de Desenvolvimento NG que atuam na plataforma Protheus AdvPL. As regras aqui listadas **não são restritivas**, mas buscam estabelecer uma identidade única para os fontes. A adoção desse padrão deve naturalmente se tornar um hábito, aumentando a legibilidade dos fontes e proporcionando mais segurança no processo de manutenção de sistemas.
 
 Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e funções já existentes devem ser adequadas gradativamente. Entretanto **não se recomenda** a mudança de trechos que não fazem parte do escopo de alteração, de forma a não comprometer a revisão técnica do fonte nem gerar risco de inserção de novos bugs acidentalmente.
 
@@ -8,6 +8,13 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 ## Arquivo
 
 - A extensão deve ser minúscula (exemplo: `.prw`, `.apw`)
+
+ + nomes de arquivo, recomendação em minúsculo, exceto para casos que tenha NG (camelcase) ou nome do módulo (fontes antigos)
+MNTStep
+mntstep
+MNTSO
+MNTSTEP -> errado
+(Marcelo)
 
 ## Estilo
 
@@ -31,7 +38,15 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`
 )
 
+IIf -> certo
+IIF -> errado
+iif -> errado
+Iif -> errado
+
 - Ao terminar uma instrução `Do While`, prefira `EndDo` ao invés de somente `End`
+
+-> pode usar só While + EndDo (recomendado)
+-> tem diferença entre while e do while no advpl?
 
 - Ao terminar uma instrução `For`, prefira `Next <variable>` ao invés de somente `Next`
 
@@ -69,6 +84,8 @@ Function Test()
 Return
 ```
 
++ pular linha após o return, antes da nova função/protheus.doc
+
 - Deixar 1 linha vazia no final de cada arquivo
 
 > Ferramentas de diff se perdem sem linha final e alguns editores já salvam por padrão uma linha extra. Alguns compiladores não entendem o fim de arquivo (não é o caso do AdvPL), por isso é uma boa prática em programação.
@@ -86,6 +103,8 @@ Return
 > Importante ressaltar que cada função deve ser
 exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre software engineering de como funções com muitos parâmetros quebram modularidade e reuso. Normalmente funções que precisam de muitos parâmetros são passíveis de melhoria para melhor abstração em sua arquitetura.
 
++ acoplamento de funções: não usar variáveis de outras funções (ex: aVETINR)
+
 - Evite aninhamentos com mais de 3 statements (exemplo: `If` dentro de `If` dentro de `If`)
 
 - Use `!=` ao invés de `<>`
@@ -97,6 +116,10 @@ exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre softwar
 ## Espaçamento
 
 - Deve haver 1 espaço entre os argumentos de função, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
+
+RetSqlName('STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso)
+
+RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 - Deve haver 1 espaço após cada vírgula (exemplo: `{ 1, 2, 3 }`)
 
@@ -124,15 +147,15 @@ exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre softwar
 
 ## Funções
 
-- São consideradas `funções genéricas` aquelas que se aplicam a qualquer módulo, normalmente sem tratar de conceitos e regra de negócio. Devem ser criadas em fontes genéricos como NGUtil e preferencialmente começar pelos caracteres `NG`
+- São consideradas **funções genéricas** aquelas que se aplicam a qualquer módulo, normalmente sem tratar de conceitos e regra de negócio. Devem ser criadas em fontes genéricos como NGUtil e preferencialmente começar pelos caracteres `NG`
 
-- São consideradas `funções genéricas do módulo` aquelas que atendem regras mais genéricas de algum módulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do módulo como MNTUtil ou MDTUtil e preferencialmente começar pelos caracteres do módulo, ex: `MNT` ou `MDT`
+- São consideradas **funções genéricas do módulo** aquelas que atendem regras mais genéricas de algum módulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do módulo como MNTUtil ou MDTUtil e preferencialmente começar pelos caracteres do módulo, ex: `MNT` ou `MDT`
 
-- São consideradas `funções de rotina` aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080CAD()`
+- São consideradas **funções de rotina** aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080CAD()`
 
-- São consideras `funções estáticas` aquelas que são utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
+- São consideras **funções estáticas** aquelas que são utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
 
 
 ## Referências
 
-AdvPL Coding Standars - https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
+AdvPL Coding Standards - https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
