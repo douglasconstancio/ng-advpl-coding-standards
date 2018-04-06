@@ -131,6 +131,8 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 - Em comentários, 1 espaço após `//`
 
++ usar /* pra quando tiver mais de uma linha, mas também posições do aHeader ou parametros de funcoes
+
 > Apesar de não ser uma obrigação, o espaçamento antes de começar a descrever o comentário auxilia na leitura e também a encontrar e substituir programaticamente padrões da linguagem.
 
 ## Redundância
@@ -140,10 +142,13 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 ## Funcionamento
 
 - Lembre-se de, ao criar uma tabela temporária, fechá-la com `dbCloseArea`
+ + para casos que se usa fwtemporarytable, usar :delete
 
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
+
++ bloquear para mandar parametro onde nao tem: MSUnLock("TBL") [MARCELO]
 
 ## Funções
 
@@ -151,7 +156,9 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 - São consideradas **funções genéricas do módulo** aquelas que atendem regras mais genéricas de algum módulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do módulo como MNTUtil ou MDTUtil e preferencialmente começar pelos caracteres do módulo, ex: `MNT` ou `MDT`
 
-- São consideradas **funções de rotina** aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080CAD()`
+- São consideradas **funções de rotina** aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080Cad()`
+
++ nao fazer MNT080XXXX ou MNA080XXXX, pra nao fugir do padrão
 
 - São consideras **funções estáticas** aquelas que são utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
 
