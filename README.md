@@ -9,12 +9,7 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 
 - A extensão deve ser minúscula (exemplo: `.prw`, `.apw`)
 
- + nomes de arquivo, recomendação em minúsculo, exceto para casos que tenha NG (camelcase) ou nome do módulo (fontes antigos)
-MNTStep
-mntstep
-MNTSO
-MNTSTEP -> errado
-(Marcelo)
+- O nome do arquivo deve ser preferencialmente em minúsculo
 
 ## Estilo
 
@@ -35,18 +30,11 @@ MNTSTEP -> errado
 
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
 
-- Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`
-)
+- Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
-IIf -> certo
-IIF -> errado
-iif -> errado
-Iif -> errado
+- A função de If em linha deve ser utilizada com os dois I's em maiúsculo: `IIf`
 
-- Ao terminar uma instrução `Do While`, prefira `EndDo` ao invés de somente `End`
-
--> pode usar só While + EndDo (recomendado)
--> tem diferença entre while e do while no advpl?
+- Ao terminar uma instrução `While` ou `Do While`, prefira `EndDo` ao invés de somente `End`
 
 - Ao terminar uma instrução `For`, prefira `Next <variable>` ao invés de somente `Next`
 
@@ -84,7 +72,7 @@ Function Test()
 Return
 ```
 
-+ pular linha após o return, antes da nova função/protheus.doc
+- Separar funções, pulando uma linha após o return, antes de inciar um novo bloco
 
 - Deixar 1 linha vazia no final de cada arquivo
 
@@ -92,18 +80,17 @@ Return
 
 - Prefira aspas simples `'` ao invés de duplas `"`
 
-> Aspas simples facilitam a leitura do código e permitem, por padrão, o uso de aspas duplas nas strings (ex: cString := 'Verifique o campo "quantidade" na tela.')
+> Aspas simples facilitam a leitura do código e permitem, por padrão, o uso de aspas duplas nas strings (ex: cString := 'Verifique o campo "quantidade" na tela')
 
 - Para acesso de índices múltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
 
-- Funções **não** devem receber mais que 6 parâmetros
+- Funções **não** devem receber mais que 6 parâmetros (dessa forma se mantém uma função mais coesa, com um objetivo específico)
 
 > Esse é um padrão utilizado em praticamente qualquer linguagem de programação com funções. Funções mestras, muito grandes, são muito mais difíceis de manter e de testar do que funções que fazem uma coisa, e a fazem bem feito. Testes unitários são integráveis a funções simples, mas difíceis em funções com muitos parâmetros. É até comum que as pessoas se percam com tantos parâmetros vazios (ex: TObj:New(100,30,,,,,,.F.)).
 
-> Importante ressaltar que cada função deve ser
-exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre software engineering de como funções com muitos parâmetros quebram modularidade e reuso. Normalmente funções que precisam de muitos parâmetros são passíveis de melhoria para melhor abstração em sua arquitetura.
+> Importante ressaltar que cada função deve ser exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre software engineering de como funções com muitos parâmetros quebram modularidade e reuso. Normalmente funções que precisam de muitos parâmetros são passíveis de melhoria para melhor abstração em sua arquitetura.
 
-+ acoplamento de funções: não usar variáveis de outras funções (ex: aVETINR)
+- Não desenvolva funções de alto acoplamento, quer dizer, funções que precisam estar acopladas à outras funções ou variáveis para funcionar (como o caso de funções que utilizam variáveis private declaradas em outro fonte)
 
 - Evite aninhamentos com mais de 3 statements (exemplo: `If` dentro de `If` dentro de `If`)
 
@@ -117,10 +104,6 @@ exatamente isso: uma função. Quanto a isso, tem dezenas de artigos sobre softwar
 
 - Deve haver 1 espaço entre os argumentos de função, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
 
-RetSqlName('STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso)
-
-RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
-
 - Deve haver 1 espaço após cada vírgula (exemplo: `{ 1, 2, 3 }`)
 
 - Deve haver espaço entre parâmetros de funções (use `Call( 1, 2, 3 )` e não `Call(1,2,3)`)
@@ -131,9 +114,9 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 - Em comentários, 1 espaço após `//`
 
-+ usar /* pra quando tiver mais de uma linha, mas também posições do aHeader ou parametros de funcoes
-
 > Apesar de não ser uma obrigação, o espaçamento antes de começar a descrever o comentário auxilia na leitura e também a encontrar e substituir programaticamente padrões da linguagem.
+
+- Prefira comentários em `//` para quando uma linha e `/**/` para trechos de código ou comentário de parâmetros (ex: function(10/*nAltura*/,20/*nLargura*/))
 
 ## Redundância
 
@@ -141,14 +124,11 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 ## Funcionamento
 
-- Lembre-se de, ao criar uma tabela temporária, fechá-la com `dbCloseArea`
- + para casos que se usa fwtemporarytable, usar :delete
+- Lembre-se de, ao criar uma tabela temporária, fechá-la com `dbCloseArea` e para casos em que se usa FWTemporaryTable, usar o método `delete`
 
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
-
-+ bloquear para mandar parametro onde nao tem: MSUnLock("TBL") [MARCELO]
 
 ## Funções
 
@@ -156,9 +136,7 @@ RetSqlName( 'STJ', 'TJ_CODBEM', .F., lReturn, cMsgAviso )
 
 - São consideradas **funções genéricas do módulo** aquelas que atendem regras mais genéricas de algum módulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do módulo como MNTUtil ou MDTUtil e preferencialmente começar pelos caracteres do módulo, ex: `MNT` ou `MDT`
 
-- São consideradas **funções de rotina** aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080Cad()`
-
-+ nao fazer MNT080XXXX ou MNA080XXXX, pra nao fugir do padrão
+- São consideradas **funções de rotina** aquelas que atendem regras específicas de alguma rotina, mas que também podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente começar pelos caracteres da própria rotina, como `MNTA080Cad()`. Evitar também reduzir o identificador do fonte para `MNA080` ou `MNT080`
 
 - São consideras **funções estáticas** aquelas que são utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
 
