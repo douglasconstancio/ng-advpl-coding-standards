@@ -32,8 +32,6 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
-- A função de If em linha deve ser utilizada com os dois I's em maiúsculo: `IIf`
-
 - Ao terminar uma instrução `While` ou `Do While`, prefira `EndDo` ao invés de somente `End`
 
 - Ao terminar uma instrução `For`, prefira `Next <variable>` ao invés de somente `Next`
@@ -45,6 +43,10 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 - Use as variáveis com nomes iguais em tamanho e caixa (não faça `thisIsMyVari` e `THISISMYVARI`)
 
 - Nomes de funções sem notação húngara devem usar **UpperCamelCase** (exemplo: `RetSqlName`)
+
+- Diretivas do pré-processador (#define < include >) devem referenciar a include com a mesma capitulação do arquivo físico, preferencialmente letras minúsculas.
+
+> É uma boa prática que evita conflitos de case sensitive em processos de compilação no Linux, por exepmlo.
 
 - Evite ultrapassar 120 colunas horizontalmente. Quebre o código com `;` quando necessário
 
@@ -84,6 +86,8 @@ Return
 
 - Para acesso de índices múltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
 
+- Evite utilizar mais do que três instruções `For.. Next` em cascata.
+
 - Funções **não** devem receber mais que 6 parâmetros (dessa forma se mantém uma função mais coesa, com um objetivo específico)
 
 > Esse é um padrão utilizado em praticamente qualquer linguagem de programação com funções. Funções mestras, muito grandes, são muito mais difíceis de manter e de testar do que funções que fazem uma coisa, e a fazem bem feito. Testes unitários são integráveis a funções simples, mas difíceis em funções com muitos parâmetros. É até comum que as pessoas se percam com tantos parâmetros vazios (ex: TObj:New(100,30,,,,,,.F.)).
@@ -93,6 +97,12 @@ Return
 - Não desenvolva funções de alto acoplamento, quer dizer, funções que precisam estar acopladas à outras funções ou variáveis para funcionar (como o caso de funções que utilizam variáveis private declaradas em outro fonte)
 
 - Evite aninhamentos com mais de 3 statements (exemplo: `If` dentro de `If` dentro de `If`)
+
+- A função de If em linha deve ser utilizada com os dois I's em maiúsculo: `IIf`
+
+- Use `If` somente para *statement* (If .. Else .. EndIf) e `IIf` para *expressão* (x:= IIf(lVar,10,20)).
+
+> *Statements* não atribuem valor, por exemplo `If (lVar)` enquanto *expressão* atribui, por exemplo `x := If(lVar, 10, 20)`. O AdvPL permite a ambiguidade de se usar `If` e `IIf` para expressões. Nesse caso utilize sempre `IIf`, pois se usar `If` o compilador irá buscar pelo `EndIf`, o que poderia gerar erro em outras linguagens.
 
 - Use `!=` ao invés de `<>`
 
