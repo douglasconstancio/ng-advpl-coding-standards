@@ -30,6 +30,8 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
 
+- Prefira declarar variáveis agrupando-as logicamente por tipo ou utilização, separando por linhas.
+
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
 - Ao terminar uma instrução `While` ou `Do While`, prefira `EndDo` ao invés de somente `End`
@@ -46,7 +48,7 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 
 - Diretivas do pré-processador (#define < include >) devem referenciar a include com a mesma capitulação do arquivo físico, preferencialmente letras minúsculas.
 
-> É uma boa prática que evita conflitos de case sensitive em processos de compilação no Linux, por exepmlo.
+> É uma boa prática que evita conflitos de case sensitive em processos de compilação no Linux, por exemplo.
 
 - Evite ultrapassar 120 colunas horizontalmente. Quebre o código com `;` quando necessário
 
@@ -120,13 +122,13 @@ Return
 
 > A recomendação é usar espaçamento antes de iniciar o primeiro parâmetro, entre cada parâmetro e ao final. Entretanto, o primeiro e último espaços ficam a critério de cada um.
 
-- **[OFF - PREFERIMOS MANTER À ESQUERDA]** `Return` indentado, já que faz parte da estrutura da função e **não** é um terminador
+- O `Return` pode ficar alinhado à esquerda (mesmo alinhamento de Function), mesmo não sendo um terminador.
 
 - Em comentários, 1 espaço após `//`
 
 > Apesar de não ser uma obrigação, o espaçamento antes de começar a descrever o comentário auxilia na leitura e também a encontrar e substituir programaticamente padrões da linguagem.
 
-- Prefira comentários em `//` para quando uma linha e `/**/` para trechos de código ou comentário de parâmetros (ex: function(10/*nAltura*/,20/*nLargura*/))
+- Prefira comentários em `//` para quando uma linha e `/**/` para trechos de código ou comentário de parâmetros (ex: function(10`/*nAltura*/`,20`/*nLargura*/`))
 
 ## Redundância
 
@@ -139,6 +141,8 @@ Return
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
+
+- Se atente ao uso de funções (Ex: FWTemporaryTable) no meio de blocos de transação, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo.
 
 ## Funções
 
