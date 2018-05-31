@@ -31,9 +31,9 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
 
-- Prefira declarar variáveis agrupando-as logicamente por tipo ou utilização, separando por linhas.
+- Prefira declarar variáveis agrupando-as logicamente por tipo ou utilização, separando por linhas
 
-- É redundância inicializar variáveis com `Nil`, exceto variáveis públicas, que por sua vez não são comuns - no geral se considera uma prática ruim por poluir o escopo global.
+- É redundância inicializar variáveis com `Nil`, exceto variáveis públicas, que por sua vez não são comuns - no geral se considera uma prática ruim por poluir o escopo global
 
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
@@ -91,7 +91,7 @@ Return
 
 - Para acesso de índices múltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
 
-- Evite utilizar mais do que três instruções `For.. Next` em cascata.
+- Evite utilizar mais do que três instruções `For.. Next` em cascata
 
 - Funções **não** devem receber mais que 6 parâmetros (dessa forma se mantém uma função mais coesa, com um objetivo específico)
 
@@ -105,7 +105,7 @@ Return
 
 - A função de If em linha deve ser utilizada com os dois I's em maiúsculo: `IIf`
 
-- Use `If` somente para *statement* (If .. Else .. EndIf) e `IIf` para *expressão* (x:= IIf(lVar,10,20)).
+- Use `If` somente para *statement* (If .. Else .. EndIf) e `IIf` para *expressão* (x:= IIf(lVar,10,20))
 
 > *Statements* não atribuem valor, por exemplo `If (lVar)` enquanto *expressão* atribui, por exemplo `x := If(lVar, 10, 20)`. O AdvPL permite a ambiguidade de se usar `If` e `IIf` para expressões. Nesse caso utilize sempre `IIf`, pois se usar `If` o compilador irá buscar pelo `EndIf`, o que poderia gerar erro em outras linguagens.
 
@@ -127,7 +127,7 @@ Return
 
 > A recomendação é usar espaçamento antes de iniciar o primeiro parâmetro, entre cada parâmetro e ao final. Entretanto, o primeiro e último espaços ficam a critério de cada um.
 
-- O `Return` pode ficar alinhado à esquerda (mesmo alinhamento de Function), mesmo não sendo um terminador.
+- O `Return` pode ficar alinhado à esquerda (mesmo alinhamento de Function), mesmo não sendo um terminador
 
 - Em comentários, 1 espaço após `//`
 
@@ -147,11 +147,11 @@ Return
 
 - Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contrário utilize `TABLE->( dbSkip() )` ou então utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
 
-- Se atente ao uso de funções (Ex: FWTemporaryTable) no meio de blocos de transação, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo.
+- Se atente ao uso de funções (Ex: FWTemporaryTable) no meio de blocos de transação, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo
 
 ## Funções
 
-- Toda função deve ter um cabeçalho de documentação baseado no modelo Protheus.doc, e o autor genérico (como "NG Informática") não deve ser utilizado.
+- Toda função deve ter um cabeçalho de documentação baseado no modelo Protheus.doc, e o autor genérico (como "NG Informática") não deve ser utilizado
 
 - São consideradas **funções genéricas** aquelas que se aplicam a qualquer módulo, normalmente sem tratar de conceitos e regra de negócio. Devem ser criadas em fontes genéricos como NGUtil e preferencialmente começar pelos caracteres `NG`
 
