@@ -22,6 +22,7 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 >Iniciar por:
 >- n-numérico
 >- c-char/string
+>- d-data
 >- l-logic/boolean
 >- a-array/matriz
 >- o-objetos
@@ -31,6 +32,8 @@ Novas funções devem ser desenvolvidas considerando as boas práticas listadas, e 
 - Evite nomes de variáveis como `nX` ou `nY` (exceto para índices). Seja mais descritivo
 
 - Prefira declarar variáveis agrupando-as logicamente por tipo ou utilização, separando por linhas.
+
+- É redundância inicializar variáveis com `Nil`, exceto variáveis públicas, que por sua vez não são comuns - no geral se considera uma prática ruim por poluir o escopo global.
 
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
@@ -108,6 +111,8 @@ Return
 
 - Use `!=` ao invés de `<>`
 
+- Prefira  `==` para comparação ao invés de apenas `=`
+
 - Não faça `== .T.`
 
 - Use `!` ao invés de `.Not.`
@@ -145,6 +150,8 @@ Return
 - Se atente ao uso de funções (Ex: FWTemporaryTable) no meio de blocos de transação, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo.
 
 ## Funções
+
+- Toda função deve ter um cabeçalho de documentação baseado no modelo Protheus.doc, e o autor genérico (como "NG Informática") não deve ser utilizado.
 
 - São consideradas **funções genéricas** aquelas que se aplicam a qualquer módulo, normalmente sem tratar de conceitos e regra de negócio. Devem ser criadas em fontes genéricos como NGUtil e preferencialmente começar pelos caracteres `NG`
 
