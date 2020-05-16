@@ -1,65 +1,65 @@
 # AdvPL Coding Standards
 
-O presente documento tem por objetivo estabelecer um padr„o de boas pr·ticas a serem utilizadas pelas equipes de Desenvolvimento NG que atuam na plataforma Protheus AdvPL. As regras aqui listadas **n„o s„o restritivas**, mas buscam estabelecer uma identidade ˙nica para os fontes. A adoÁ„o desse padr„o deve naturalmente se tornar um h·bito, aumentando a legibilidade dos fontes e proporcionando mais seguranÁa no processo de manutenÁ„o de sistemas.
+O presente documento tem por objetivo estabelecer um padr√£o de boas pr√°ticas a serem utilizadas pelas equipes de Desenvolvimento NG que atuam na plataforma Protheus AdvPL. As regras aqui listadas **n√£o s√£o restritivas**, mas buscam estabelecer uma identidade √∫nica para os fontes. A ado√ß√£o desse padr√£o deve naturalmente se tornar um h√°bito, aumentando a legibilidade dos fontes e proporcionando mais seguran√ßa no processo de manuten√ß√£o de sistemas.
 
-Novas funÁıes devem ser desenvolvidas considerando as boas pr·ticas listadas, e funÁıes j· existentes devem ser adequadas gradativamente. Entretanto **n„o se recomenda** a mudanÁa de trechos que n„o fazem parte do escopo de alteraÁ„o, de forma a n„o comprometer a revis„o tÈcnica do fonte nem gerar risco de inserÁ„o de novos bugs acidentalmente.
+Novas fun√ß√µes devem ser desenvolvidas considerando as boas pr√°ticas listadas, e fun√ß√µes j√° existentes devem ser adequadas gradativamente. Entretanto **n√£o se recomenda** a mudan√ßa de trechos que n√£o fazem parte do escopo de altera√ß√£o, de forma a n√£o comprometer a revis√£o t√©cnica do fonte nem gerar risco de inser√ß√£o de novos bugs acidentalmente.
 
 
 ## Arquivo
 
-- A extens„o deve ser min˙scula (exemplo: `.prw`, `.apw`)
+- A extens√£o deve ser min√∫scula (exemplo: `.prw`, `.apw`)
 
-- O nome do arquivo deve ser preferencialmente em min˙sculo
+- O nome do arquivo deve ser preferencialmente em min√∫sculo
 
 ## Estilo
 
-- Tabs somente para indentaÁ„o, n„o para separaÁ„o
+- Tabs somente para indenta√ß√£o, n√£o para separa√ß√£o
 
-> A tabulaÁ„o deve ser utilizada somente ‡ esquerda, antes de iniciar a linha e nunca no meio da linha. O motivo È que quando o arquivo for aberto em diferentes editores (TDS, VSCode, Sublime, etc.), a formataÁ„o ser· respeitada
+> A tabula√ß√£o deve ser utilizada somente √† esquerda, antes de iniciar a linha e nunca no meio da linha. O motivo √© que quando o arquivo for aberto em diferentes editores (TDS, VSCode, Sublime, etc.), a formata√ß√£o ser√° respeitada
 
-- Nome de vari·veis devem se basear na notaÁ„o h˙ngara
+- Nome de vari√°veis devem se basear na nota√ß√£o h√∫ngara
 
 >Iniciar por:
->- n-numÈrico
+>- n-num√©rico
 >- c-char/string
 >- d-data
 >- l-logic/boolean
 >- a-array/matriz
 >- o-objetos
->- b-bloco de cÛdigo
+>- b-bloco de c√≥digo
 >- x-indefinido
 
-- Evite nomes de vari·veis como `nX` ou `nY` (exceto para Ìndices). Seja mais descritivo
+- Evite nomes de vari√°veis como `nX` ou `nY` (exceto para √≠ndices). Seja mais descritivo
 
-- Prefira declarar vari·veis agrupando-as logicamente por tipo ou utilizaÁ„o, separando por linhas
+- Prefira declarar vari√°veis agrupando-as logicamente por tipo ou utiliza√ß√£o, separando por linhas
 
-- … redund‚ncia inicializar vari·veis com `Nil`, exceto vari·veis p˙blicas, que por sua vez n„o s„o comuns - no geral se considera uma pr·tica ruim por poluir o escopo global
+- √â redund√¢ncia inicializar vari√°veis com `Nil`, exceto vari√°veis p√∫blicas, que por sua vez n√£o s√£o comuns - no geral se considera uma pr√°tica ruim por poluir o escopo global
 
 - Palavras-chave da linguagem devem usar **UpperCamelCase** (exemplos: `If`, `EndIf`, `While`)
 
-- Ao terminar uma instruÁ„o `While` ou `Do While`, prefira `End` e `EndDo` respectivamente
+- Ao terminar uma instru√ß√£o `While` ou `Do While`, prefira `End` e `EndDo` respectivamente
 
-- Ao terminar uma instruÁ„o `For`, prefira `Next <variable>` ao invÈs de somente `Next`
+- Ao terminar uma instru√ß√£o `For`, prefira `Next <variable>` ao inv√©s de somente `Next`
 
-- Nomes de vari·veis locais devem ser em **lowerCamelCase** (exemplos: `cName`, `nAge`)
+- Nomes de vari√°veis locais devem ser em **lowerCamelCase** (exemplos: `cName`, `nAge`)
 
-- Nomes de funÁıes em notaÁ„o h˙ngara devem usar **lowerCamelCase** (exemplo: `aAdd`)
+- Nomes de fun√ß√µes em nota√ß√£o h√∫ngara devem usar **lowerCamelCase** (exemplo: `aAdd`)
 
-- Use as vari·veis com nomes iguais em tamanho e caixa (n„o faÁa `thisIsMyVari` e `THISISMYVARI`)
+- Use as vari√°veis com nomes iguais em tamanho e caixa (n√£o fa√ßa `thisIsMyVari` e `THISISMYVARI`)
 
-- Nomes de funÁıes sem notaÁ„o h˙ngara devem usar **UpperCamelCase** (exemplo: `RetSqlName`)
+- Nomes de fun√ß√µes sem nota√ß√£o h√∫ngara devem usar **UpperCamelCase** (exemplo: `RetSqlName`)
 
-- Diretivas do prÈ-processador (#define < include >) devem referenciar a include com a mesma capitulaÁ„o do arquivo fÌsico, preferencialmente letras min˙sculas.
+- Diretivas do pr√©-processador (#define < include >) devem referenciar a include com a mesma capitula√ß√£o do arquivo f√≠sico, preferencialmente letras min√∫sculas.
 
-> … uma boa pr·tica que evita conflitos de case sensitive em processos de compilaÁ„o no Linux, por exemplo.
+> √â uma boa pr√°tica que evita conflitos de case sensitive em processos de compila√ß√£o no Linux, por exemplo.
 
-- Evite ultrapassar 120 colunas horizontalmente. Quebre o cÛdigo com `;` quando necess·rio
+- Evite ultrapassar 120 colunas horizontalmente. Quebre o c√≥digo com `;` quando necess√°rio
 
-- Valores lÛgicos devem usar caixa alta (exemplo: `.F.`)
+- Valores l√≥gicos devem usar caixa alta (exemplo: `.F.`)
 
-- EspaÁo entre operadores. Use `nValue > nExpected` ao invÈs de `nValue>nExpected`
+- Espa√ßo entre operadores. Use `nValue > nExpected` ao inv√©s de `nValue>nExpected`
 
-- Idioma padronizado. Evite misturar portuguÍs e inglÍs quando possÌvel
+- Idioma padronizado. Evite misturar portugu√™s e ingl√™s quando poss√≠vel
 
 - Deixar 1 linha em branco para cada *statement*, exceto conjuntos de *statements*
 
@@ -79,89 +79,84 @@ Function Test()
 Return
 ```
 
-- Separar funÁıes, pulando uma linha apÛs o return, antes de inciar um novo bloco
+- Separar fun√ß√µes, pulando uma linha ap√≥s o return, antes de inciar um novo bloco
 
 - Deixar 1 linha vazia no final de cada arquivo
 
-> Ferramentas de diff se perdem sem linha final e alguns editores j· salvam por padr„o uma linha extra. Alguns compiladores n„o entendem o fim de arquivo (n„o È o caso do AdvPL), por isso È uma boa pr·tica em programaÁ„o.
+> Ferramentas de diff se perdem sem linha final e alguns editores j√° salvam por padr√£o uma linha extra. Alguns compiladores n√£o entendem o fim de arquivo (n√£o √© o caso do AdvPL), por isso √© uma boa pr√°tica em programa√ß√£o.
 
-- Prefira aspas simples `'` ao invÈs de duplas `"`
+- Prefira aspas simples `'` ao inv√©s de duplas `"`
 
-> Aspas simples facilitam a leitura do cÛdigo e permitem, por padr„o, o uso de aspas duplas nas strings (ex: cString := 'Verifique o campo "quantidade" na tela')
+> Aspas simples facilitam a leitura do c√≥digo e permitem, por padr√£o, o uso de aspas duplas nas strings (ex: cString := 'Verifique o campo "quantidade" na tela')
 
-- Para acesso de Ìndices m˙ltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
+- Para acesso de √≠ndices m√∫ltiplos, evite `aList[ nI ][ nJ ]`. Use `aList[ nI, nJ ]`
 
-- Evite utilizar mais do que trÍs instruÁıes `For.. Next` em cascata
+- Evite utilizar mais do que tr√™s instru√ß√µes `For.. Next` em cascata
 
-- FunÁıes **n„o** devem receber mais que 6 par‚metros (dessa forma se mantÈm uma funÁ„o mais coesa, com um objetivo especÌfico)
+- Fun√ß√µes **n√£o** devem receber mais que 6 par√¢metros (dessa forma se mant√©m uma fun√ß√£o mais coesa, com um objetivo espec√≠fico)
 
-> Esse È um padr„o utilizado em praticamente qualquer linguagem de programaÁ„o com funÁıes. FunÁıes mestras, muito grandes, s„o muito mais difÌceis de manter e de testar do que funÁıes que fazem uma coisa, e a fazem bem feito. Testes unit·rios s„o integr·veis a funÁıes simples, mas difÌceis em funÁıes com muitos par‚metros. … atÈ comum que as pessoas se percam com tantos par‚metros vazios (ex: TObj:New(100,30,,,,,,.F.)).
+> Esse √© um padr√£o utilizado em praticamente qualquer linguagem de programa√ß√£o com fun√ß√µes. Fun√ß√µes mestras, muito grandes, s√£o muito mais dif√≠ceis de manter e de testar do que fun√ß√µes que fazem uma coisa, e a fazem bem feito. Testes unit√°rios s√£o integr√°veis a fun√ß√µes simples, mas dif√≠ceis em fun√ß√µes com muitos par√¢metros. √â at√© comum que as pessoas se percam com tantos par√¢metros vazios (ex: TObj:New(100,30,,,,,,.F.)).
 
-> Importante ressaltar que cada funÁ„o deve ser exatamente isso: uma funÁ„o. Quanto a isso, tem dezenas de artigos sobre software engineering de como funÁıes com muitos par‚metros quebram modularidade e reuso. Normalmente funÁıes que precisam de muitos par‚metros s„o passÌveis de melhoria para melhor abstraÁ„o em sua arquitetura.
+> Importante ressaltar que cada fun√ß√£o deve ser exatamente isso: uma fun√ß√£o. Quanto a isso, tem dezenas de artigos sobre software engineering de como fun√ß√µes com muitos par√¢metros quebram modularidade e reuso. Normalmente fun√ß√µes que precisam de muitos par√¢metros s√£o pass√≠veis de melhoria para melhor abstra√ß√£o em sua arquitetura.
 
-- N„o desenvolva funÁıes de alto acoplamento, quer dizer, funÁıes que precisam estar acopladas ‡ outras funÁıes ou vari·veis para funcionar (como o caso de funÁıes que utilizam vari·veis private declaradas em outro fonte)
+- N√£o desenvolva fun√ß√µes de alto acoplamento, quer dizer, fun√ß√µes que precisam estar acopladas √† outras fun√ß√µes ou vari√°veis para funcionar (como o caso de fun√ß√µes que utilizam vari√°veis private declaradas em outro fonte)
 
 - Evite aninhamentos com mais de 3 statements (exemplo: `If` dentro de `If` dentro de `If`)
 
-- A funÁ„o de If em linha deve ser utilizada com os dois I's em mai˙sculo: `IIf`
+- A fun√ß√£o de If em linha deve ser utilizada com os dois I's em mai√∫sculo: `IIf`
 
-- Use `If` somente para *statement* (If .. Else .. EndIf) e `IIf` para *express„o* (x:= IIf(lVar,10,20))
+- Use `If` somente para *statement* (If .. Else .. EndIf) e `IIf` para *express√£o* (x:= IIf(lVar,10,20))
 
-> *Statements* n„o atribuem valor, por exemplo `If (lVar)` enquanto *express„o* atribui, por exemplo `x := If(lVar, 10, 20)`. O AdvPL permite a ambiguidade de se usar `If` e `IIf` para expressıes. Nesse caso utilize sempre `IIf`, pois se usar `If` o compilador ir· buscar pelo `EndIf`, o que poderia gerar erro em outras linguagens.
+> *Statements* n√£o atribuem valor, por exemplo `If (lVar)` enquanto *express√£o* atribui, por exemplo `x := If(lVar, 10, 20)`. O AdvPL permite a ambiguidade de se usar `If` e `IIf` para express√µes. Nesse caso utilize sempre `IIf`, pois se usar `If` o compilador ir√° buscar pelo `EndIf`, o que poderia gerar erro em outras linguagens.
 
-- Use `!=` ao invÈs de `<>`
+- Use `!=` ao inv√©s de `<>`
 
-- Prefira  `==` para comparaÁ„o ao invÈs de apenas `=`
+- Prefira  `==` para compara√ß√£o ao inv√©s de apenas `=`
 
-- N„o faÁa `== .T.`
+- N√£o fa√ßa `== .T.`
 
-- Use `!` ao invÈs de `.Not.`
+- Use `!` ao inv√©s de `.Not.`
 
-## EspaÁamento
+## Espa√ßamento
 
-- Deve haver 1 espaÁo entre os argumentos de funÁ„o, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
+- Deve haver 1 espa√ßo entre os argumentos de fun√ß√£o, blocos e arrays (exemplo: `RetSqlName( 'STJ' )`)
 
-- Deve haver 1 espaÁo apÛs cada vÌrgula (exemplo: `{ 1, 2, 3 }`)
+- Deve haver 1 espa√ßo ap√≥s cada v√≠rgula (exemplo: `{ 1, 2, 3 }`)
 
-- Deve haver espaÁo entre par‚metros de funÁıes (use `Call( 1, 2, 3 )` e n„o `Call(1,2,3)`)
+- Deve haver espa√ßo entre par√¢metros de fun√ß√µes (use `Call( 1, 2, 3 )` e n√£o `Call(1,2,3)`)
 
-> A recomendaÁ„o È usar espaÁamento antes de iniciar o primeiro par‚metro, entre cada par‚metro e ao final. Entretanto, o primeiro e ˙ltimo espaÁos ficam a critÈrio de cada um.
+> A recomenda√ß√£o √© usar espa√ßamento antes de iniciar o primeiro par√¢metro, entre cada par√¢metro e ao final. Entretanto, o primeiro e √∫ltimo espa√ßos ficam a crit√©rio de cada um.
 
-- O `Return` pode ficar alinhado ‡ esquerda (mesmo alinhamento de Function), mesmo n„o sendo um terminador
+- O `Return` pode ficar alinhado √† esquerda (mesmo alinhamento de Function), mesmo n√£o sendo um terminador
 
-- Em coment·rios, 1 espaÁo apÛs `//`
+- Em coment√°rios, 1 espa√ßo ap√≥s `//`
 
-> Apesar de n„o ser uma obrigaÁ„o, o espaÁamento antes de comeÁar a descrever o coment·rio auxilia na leitura e tambÈm a encontrar e substituir programaticamente padrıes da linguagem.
+> Apesar de n√£o ser uma obriga√ß√£o, o espa√ßamento antes de come√ßar a descrever o coment√°rio auxilia na leitura e tamb√©m a encontrar e substituir programaticamente padr√µes da linguagem.
 
-- Prefira coment·rios em `//` para quando uma linha e `/**/` para trechos de cÛdigo ou coment·rio de par‚metros (ex: function(10`/*nAltura*/`,20`/*nLargura*/`))
+- Prefira coment√°rios em `//` para quando uma linha e `/**/` para trechos de c√≥digo ou coment√°rio de par√¢metros (ex: function(10`/*nAltura*/`,20`/*nLargura*/`))
 
-## Redund‚ncia
+## Redund√¢ncia
 
 - Substitua `If` dentro de `If` por `.And.`
 
 ## Funcionamento
 
-- Lembre-se de, ao criar uma tabela tempor·ria, fech·-la com `dbCloseArea` e para casos em que se usa FWTemporaryTable, usar o mÈtodo `delete`
+- Lembre-se de, ao criar uma tabela tempor√°ria, fech√°-la com `dbCloseArea` e para casos em que se usa FWTemporaryTable, usar o m√©todo `delete`
 
 - Lembre-se de fechar o _handler_ para o arquivo com `fClose` ao usar `fOpen`
 
-- Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contr·rio utilize `TABLE->( dbSkip() )` ou ent„o utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
+- Quando deslocar para outro registro utilizando `dbSkip`, garanta estar posicionado na tabela desejada, caso contr√°rio utilize `TABLE->( dbSkip() )` ou ent√£o utilize `dbSelectArea( TABLE )` antes do `dbSkip()`
 
-- Se atente ao uso de funÁıes (Ex: FWTemporaryTable) no meio de blocos de transaÁ„o, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo
+- Se atente ao uso de fun√ß√µes (Ex: FWTemporaryTable) no meio de blocos de transa√ß√£o, pois em Oracle sua chamada pode realizar o commit dos dados no meio do processo
 
-## FunÁıes
+## Fun√ß√µes
 
-- Toda funÁ„o deve ter um cabeÁalho de documentaÁ„o baseado no modelo Protheus.doc, e o autor genÈrico (como "NG Inform·tica") n„o deve ser utilizado
+- Toda fun√ß√£o deve ter um cabe√ßalho de documenta√ß√£o baseado no modelo Protheus.doc, e o autor gen√©rico (como "NG Inform√°tica") n√£o deve ser utilizado
 
-- S„o consideradas **funÁıes genÈricas** aquelas que se aplicam a qualquer mÛdulo, normalmente sem tratar de conceitos e regra de negÛcio. Devem ser criadas em fontes genÈricos como NGUtil e preferencialmente comeÁar pelos caracteres `NG`
+- S√£o consideradas **fun√ß√µes gen√©ricas** aquelas que se aplicam a qualquer m√≥dulo, normalmente sem tratar de conceitos e regra de neg√≥cio. Devem ser criadas em fontes gen√©ricos como NGUtil e preferencialmente come√ßar pelos caracteres `NG`
 
-- S„o consideradas **funÁıes genÈricas do mÛdulo** aquelas que atendem regras mais genÈricas de algum mÛdulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do mÛdulo como MNTUtil ou MDTUtil e preferencialmente comeÁar pelos caracteres do mÛdulo, ex: `MNT` ou `MDT`
+- S√£o consideradas **fun√ß√µes gen√©ricas do m√≥dulo** aquelas que atendem regras mais gen√©ricas de algum m√≥dulo, sendo utilizadas em um grupo de rotinas. Devem ser criadas em fontes do m√≥dulo como MNTUtil ou MDTUtil e preferencialmente come√ßar pelos caracteres do m√≥dulo, ex: `MNT` ou `MDT`
 
-- S„o consideradas **funÁıes de rotina** aquelas que atendem regras especÌficas de alguma rotina, mas que tambÈm podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente comeÁar pelos caracteres da prÛpria rotina, como `MNTA080Cad()`. Evitar tambÈm reduzir o identificador do fonte para `MNA080` ou `MNT080`
+- S√£o consideradas **fun√ß√µes de rotina** aquelas que atendem regras espec√≠ficas de alguma rotina, mas que tamb√©m podem ser chamadas externamente. Devem ser criadas no fonte que a utiliza e preferencialmente come√ßar pelos caracteres da pr√≥pria rotina, como `MNTA080Cad()`. Evitar tamb√©m reduzir o identificador do fonte para `MNA080` ou `MNT080`
 
-- S„o consideras **funÁıes est·ticas** aquelas que s„o utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
-
-
-## ReferÍncias
-
-AdvPL Coding Standards - https://github.com/haskellcamargo/advpl-coding-standards by @haskellcamargo
+- S√£o consideras **fun√ß√µes est√°ticas** aquelas que s√£o utilizadas apenas por um determinado fonte, sem chamada  externa por outros fontes. Devem ser criadas no fonte que a utiliza e preferencialmente iniciando pelo caracter `f` como `fCalcHora()`
